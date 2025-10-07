@@ -1,5 +1,6 @@
 import express from "express";
 import users from "../data/user.js";
+import applications from "../data/applications.js";
 
 const router = express.Router();
 
@@ -29,6 +30,15 @@ router.post("/new", (req, res) => {
   res.redirect("/users");
 });
 
+router.get("/:userName/applications", (req, res) => {
+    const userName = req.params.userName;
+    const userApplications = applications.filter(
+      (application) => application.userName === userName
+    );
+    
+    res.render("applications", { userName, applications: userApplications });
+  });
+  
 router.get("/:userName/applications/add", (req, res) => {
     const { userName } = req.params;
     const user = users.find(u => u.userName === userName);

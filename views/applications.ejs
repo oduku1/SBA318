@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= user.name %>'s Applications</title>
+  <title><%= userName %>'s Applications</title>
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-  <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css"></head>
+</head>
 <body>
-  <h1><%= user.name %>'s Job Applications</h1>
+  <h1><%= userName %>'s Job Applications</h1>
   <nav>
     <a href="/">Home</a> |
     <a href="/applications/add">Add New Application</a>
   </nav>
-  <ul>
-    <% applications.forEach(app => { %>
-      <li>
-        <strong><%= app.company %></strong> - <%= app.position %> (<%= app.status %>)  
-        | <a href="/applications/<%= app.userName %>/<%= app.id %>/edit">Edit</a>
-      </li>
-    <% }) %>
-  </ul>
+
+  <% if (applications.length === 0) { %>
+    <p>No applications yet. <a href="/applications/add">Add one now</a>.</p>
+  <% } else { %>
+    <ul>
+      <% applications.forEach(application => { %>
+        <li>
+          <strong><%= application.company %></strong> - 
+          <%= application.position %> (<%= application.status %>)  
+          | <a href="/applications/<%= application.userName %>/<%= application.id %>/edit">Edit</a>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
 </body>
 </html>
