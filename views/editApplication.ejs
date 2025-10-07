@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Application</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css"></head>
+<body>
+  <h1>Edit Application: <%= application.company %> - <%= application.position %></h1>
+
+  <form action="/applications/<%= application.userName %>/<%= application.id %>/edit" method="POST">
+    <label>Company:</label>
+    <input type="text" name="company" value="<%= application.company %>" required>
+
+    <label>Position:</label>
+    <input type="text" name="position" value="<%= application.position %>" required>
+
+    <label>Status:</label>
+    <select name="status">
+      <option value="Applied" <%= application.status === "Applied" ? "selected" : "" %>>Applied</option>
+      <option value="Interview" <%= application.status === "Interview" ? "selected" : "" %>>Interview</option>
+      <option value="Offer" <%= application.status === "Offer" ? "selected" : "" %>>Offer</option>
+      <option value="Rejected" <%= application.status === "Rejected" ? "selected" : "" %>>Rejected</option>
+    </select>
+
+    <label>Notes:</label>
+    <textarea name="notes"><%= application.notes || "" %></textarea>
+
+    <button type="submit">Update Application</button>
+  </form>
+
+  <a href="/users/<%= application.userName %>/applications">Back to Applications</a>
+</body>
+</html>
