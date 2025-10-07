@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <header>
-        <h1>Job Application Tracker</h1>
-        <nav>
-          <a href="/">Home</a> |
-          <a href="/applications">View Applications</a> |
-          <a href="/applications/new">Add Application</a>
-        </nav>
-      </header>
+  <header>
+    <h1>Job Application Tracker</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/users">View Users</a> |
+      <a href="/users/new">Add User</a>
+    </nav>
+  </header>
 
-      <h2>Welcome!</h2>
-      <p>Track your job search easily. Add applications, mark their status, and stay organized.</p>
-      <p><a href="/applications">View My Applications</a></p>
-    </body>
+  <main>
+    <h2>Welcome!</h2>
+    <p>Track your job search easily. Add applications, mark their status, and stay organized.</p>
+
+    <h3>Users</h3>
+    <% if (users.length === 0) { %>
+      <p>No users yet. <a href="/users/new">Add a new user</a></p>
+    <% } else { %>
+      <ul>
+        <% users.forEach(user => { %>
+          <li>
+            <strong><%= user.name %> (<%= user.userName %>)</strong> |
+            <a href="/users/<%= user.userName %>/applications">View Applications</a> |
+            <a href="/users/<%= user.userName %>/applications/add">Add Application</a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </main>
+</body>
 </html>

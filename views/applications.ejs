@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title><%= user.name %>'s Applications</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-    <h1>My job Application</h1>
+  <h1><%= user.name %>'s Job Applications</h1>
+  <nav>
     <a href="/">Home</a> |
-  <a href="api/applications/new">Add New</a>
+    <a href="/applications/add">Add New Application</a>
+  </nav>
   <ul>
     <% applications.forEach(app => { %>
       <li>
-        <strong><%= app.company %></strong> - <%= app.position %>  
-        (<%= app.status %>)
+        <strong><%= app.company %></strong> - <%= app.position %> (<%= app.status %>)  
+        | <a href="/applications/<%= app.userName %>/<%= app.id %>/edit">Edit</a>
       </li>
     <% }) %>
   </ul>
-    
 </body>
 </html>

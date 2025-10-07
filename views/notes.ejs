@@ -5,11 +5,13 @@
 </head>
 <body>
   <h1>Notes for <%= application.company %> - <%= application.position %></h1>
+
   <ul>
     <% applicationNotes.forEach(note => { %>
       <li><%= note.date %>: <%= note.content %></li>
     <% }) %>
   </ul>
-  <a href="/users/<%= application.userId %>/applications">Back to Applications</a>
+
+  <a href="/applications/<%= application.userName %>/applications">Back to Applications</a>
 </body>
 </html>

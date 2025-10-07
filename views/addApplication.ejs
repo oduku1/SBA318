@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applications</title>
+  <title>Add New Application</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-    
-    
+  <h1>Add New Application</h1>
+  <form action="/applications/add" method="POST">
+    <!-- userName comes from the current user, no need to type it -->
+    <input type="hidden" name="userName" value="<%= user.userName %>">
+  
+    <label>Company:</label>
+    <input type="text" name="company" required>
+  
+    <label>Position:</label>
+    <input type="text" name="position" required>
+  
+    <label>Status:</label>
+    <select name="status">
+      <option value="Applied">Applied</option>
+      <option value="Interview">Interview</option>
+      <option value="Offer">Offer</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  
+    <label>Date Applied:</label>
+    <input type="date" name="dateApplied" required>
+  
+    <label>Notes:</label>
+    <textarea name="notes"></textarea>
+  
+    <button type="submit">Add Application</button>
+  </form>
 </body>
 </html>
