@@ -8,7 +8,7 @@
   <h1><%= userName %>'s Job Applications</h1>
   <nav>
     <a href="/">Home</a> |
-    <a href="/applications/add">Add New Application</a>
+    <a href="/applications/add/<%=userName%>">Add New Application</a>
   </nav>
 
   <% if (applications.length === 0) { %>
