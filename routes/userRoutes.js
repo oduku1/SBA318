@@ -4,21 +4,19 @@ import applications from "../data/applications.js";
 
 const router = express.Router();
 
-// List all users
+
 router.get("/", (req, res) => {
   res.render("users", { users });
 });
 
-// Show "Add New User" form
 router.get("/new", (req, res) => {
   res.render("addUser");
 });
 
-// Handle adding a new user
+
 router.post("/new", (req, res) => {
   const { name, userName, email } = req.body;
 
-  // Check if userName already exists
   const existingUser = users.find(u => u.userName === userName);
   if (existingUser) {
     return res.status(400).send("UserName already exists");

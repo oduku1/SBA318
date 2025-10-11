@@ -1,7 +1,6 @@
 import express from "express";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import userRoutes from "./routes/userRoutes.js"
-import noteRoutes from "./routes/noteRoutes.js"
 import users from "./data/user.js"; 
 
 
@@ -15,7 +14,6 @@ app.use(express.json());
 
 app.use("/applications", applicationRoutes);
 app.use("/users", userRoutes);
-app.use("/notes", noteRoutes);
 
 
 app.get("/", (req, res) => {
